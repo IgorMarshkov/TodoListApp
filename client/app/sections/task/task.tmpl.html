@@ -1,0 +1,30 @@
+<div class="container" ng-controller="TaskCtrl">
+    <h1>Add Task</h1>
+
+    <div class="form-group" ng-class="{'has-error' : errorMap.name}">
+        <label class="control-label">Task Name</label>
+        <input class="form-control" ng-model="task.name" ng-minlength="5" ng-maxlength="100" placeholder="Type task name.."/>
+
+        <p ng-show="errorMap.name" class="help-block">{{errorMap.name}}</p>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error' : errorMap.priority}">
+        <label class="control-label">Priority</label>
+        <select class="form-control" ng-model="task.priority" ng-options="priority for priority in priorityList">
+            <option value="" selected>Select Priority</option>
+        </select>
+
+        <p ng-show="errorMap.priority" class="help-block">{{errorMap.priority}}</p>
+    </div>
+
+    <div class="form-group" ng-show="task.id">
+        <label class="control-label">Done</label>
+        <input type="checkbox" class="pull-right" ng-model="task.done"/>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary pull-right" ng-click="saveTask()">Add</button>
+    </div>
+
+    <a href="/#!/">Pending tasks</a>
+</div>

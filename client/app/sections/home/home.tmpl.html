@@ -1,0 +1,32 @@
+<div class="container">
+
+    <h1>Pending tasks</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="text-info"><h4>Task Name</h4></th>
+            <th class="text-info"><h4>Creation Date</h4></th>
+            <th class="text-info"><h4>Priority</h4></th>
+            <th class="text-info"><h4>Action</h4></th>
+        </tr>
+        </thead>
+        <tbody ng-controller="HomeCtrl">
+        <tr ng-repeat="task in taskList | filter:searchText | filter: { done:'false'} | orderBy:'-id'">
+            <td>{{task.name}}</td>
+            <td>{{task.creationDate | date:'dd/MM/yyyy h:mm a'}}</td>
+            <td>{{task.priority}}</td>
+            <td>&nbsp;
+                <a href='/#!/task/{{task.id}}'>
+                    Edit
+                </a> &nbsp;
+                <a ng-href='' ng-click='deleteTask(task.id)'>
+                    Delete
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/#!/task">Add Task</a>
+</div>
